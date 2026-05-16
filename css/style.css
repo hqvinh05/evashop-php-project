@@ -1,0 +1,383 @@
+/* =========================================
+   1. CẤU HÌNH CHUNG (GENERAL)
+   ========================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    overflow-x: hidden; /* Tránh thanh cuộn ngang do hiệu ứng bay */
+}
+
+a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* =========================================
+   2. HEADER & NAVIGATION
+   ========================================= */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* Giữ menu luôn nổi lên trên cùng */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-link {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+}
+
+.dropdown-menu {
+    border-top: 3px solid #ffc107; /* Viền vàng thương hiệu */
+    border-radius: 0 0 5px 5px;
+}
+
+/* --- LOGO ANIMATION --- */
+.header-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    /* Nhịp đập tỏa sáng */
+    animation: pulse-glow 2s infinite ease-in-out; 
+}
+
+.header-logo:hover {
+    animation: none;
+    transform: rotate(-5deg) scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+@keyframes pulse-glow {
+    0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(255, 193, 7, 0)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.8)); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(255, 193, 7, 0)); }
+}
+
+/* --- NÓN NOEL TRÊN LOGO --- */
+.santa-hat {
+    position: absolute;
+    top: -18px;
+    right: -12px;
+    width: 35px;
+    height: auto;
+    transform: rotate(-15deg);
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+    z-index: 1050;
+    pointer-events: none;
+    animation: lac-lu 2s infinite ease-in-out;
+}
+
+@keyframes lac-lu {
+    0%, 100% { transform: rotate(-15deg); }
+    50% { transform: rotate(-5deg); }
+}
+
+/* =========================================
+   3. HIỆU ỨNG TUYẾT RƠI (TOÀN TRANG)
+   ========================================= */
+.snowflake {
+    position: fixed; /* Cố định theo màn hình để rơi toàn web */
+    top: -10px;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none; /* Chuột bấm xuyên qua tuyết */
+    z-index: 9999; /* Luôn nổi lên trên cùng */
+    opacity: 0.8;
+    box-shadow: 0 0 5px rgba(255,255,255,0.8);
+}
+
+/* =========================================
+   4. BREADCRUMB (ĐƯỜNG DẪN)
+   ========================================= */
+.breadcrumb-container {
+    background-color: #fff;
+    padding: 15px 0;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.breadcrumb-item a {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.breadcrumb-item a:hover {
+    color: #ffc107;
+}
+
+.breadcrumb-item.active {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+/* =========================================
+   5. SẢN PHẨM (PRODUCT CARD)
+   ========================================= */
+.card {
+    transition: 0.3s;
+    overflow: hidden; /* Để hiệu ứng zoom ảnh không bị tràn */
+}
+
+/* Container ép ảnh vuông vức */
+.product-img-container {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.product-img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain;
+    transition: 0.4s ease;
+}
+
+/* Hiệu ứng Hover Card */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: #ffc107;
+}
+
+.card:hover .product-img-container img {
+    transform: scale(1.1); /* Phóng to ảnh nhẹ */
+}
+
+/* Link bao phủ toàn bộ card (để bấm đâu cũng dính) */
+.stretched-link::after {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 1;
+    content: "";
+}
+
+/* =========================================
+   6. TRANG CHI TIẾT SẢN PHẨM
+   ========================================= */
+#mainImage {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.img-thumbnail {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.6;
+    border: 2px solid transparent;
+    transition: 0.2s;
+}
+
+.img-thumbnail:hover, .img-thumbnail.active {
+    opacity: 1;
+    border-color: #ffc107;
+}
+
+/* Đánh giá sao (Detail Page) */
+.rating-overview {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+/* =========================================
+   7. BỘ LỌC (SIDEBAR FILTER)
+   ========================================= */
+.filter-box {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.filter-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ffc107;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-item {
+    margin-bottom: 10px;
+}
+
+.filter-item label {
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.filter-item label:hover {
+    color: #ffc107;
+}
+
+.filter-item input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #ffc107;
+    transform: scale(1.1);
+}
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+.footer {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 60px 0 30px;
+    margin-top: 60px;
+    border-top: 4px solid #ffc107;
+}
+
+.footer h5 {
+    color: #ffc107;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.footer a {
+    color: #aaa;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.footer a:hover {
+    color: #fff;
+    text-decoration: none;
+    padding-left: 5px; /* Hiệu ứng trượt nhẹ */
+}
+
+/* =========================================
+   9. STAR RATING INPUT (Form đánh giá)
+   ========================================= */
+/* Ẩn radio mặc định */
+.star-rating-input {
+    display: flex;
+    flex-direction: row-reverse; /* Đảo ngược để dùng selector ~ */
+    justify-content: flex-end;
+}
+
+.star-rating-input input {
+    display: none;
+}
+
+.star-rating-input label {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.2s;
+}
+
+/* Logic đổi màu khi hover hoặc checked */
+.star-rating-input input:checked ~ label,
+.star-rating-input label:hover,
+.star-rating-input label:hover ~ label {
+    color: #ffc107; /* Màu vàng sao */
+}
+/* Lớp phủ mờ toàn màn hình */
+.checkin-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Nền đen mờ */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+
+/* Hộp nội dung Popup */
+.checkin-popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.8);
+    animation: popUp 0.3s forwards; /* Hiệu ứng phóng to */
+}
+
+.popup-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.checkin-popup-content h3 {
+    color: #d32f2f; /* Màu đỏ nổi bật */
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.checkin-popup-content p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.checkin-popup-content button {
+    background: #d32f2f;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.checkin-popup-content button:hover {
+    background: #b71c1c;
+}
+
+/* Keyframes cho hiệu ứng */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

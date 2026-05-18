@@ -15,13 +15,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         
-        // Lưu Session
+        // Lưu Session cho hệ thống Web
         $_SESSION['username'] = $row['username'];
         $_SESSION['hoten'] = $row['hoten'];
         $_SESSION['role'] = $row['role']; 
         
         // Lưu ID để dùng cho việc đánh giá/mua hàng sau này
         $_SESSION['user_id'] = $row['id']; 
+
+        // =======================================================
+        // [ĐÃ SỬA] THÊM BIẾN NÀY ĐỂ ĐỒNG BỘ TÊN VỚI BOT AI GEMINI
+        // =======================================================
+        $_SESSION['user_name'] = $row['hoten']; 
 
         // XỬ LÝ GHI NHỚ ĐĂNG NHẬP
         if (isset($_POST['remember'])) {

@@ -13,7 +13,7 @@ if ($order_id == 0) {
 // ==========================================
 // DÁN MÃ API TOKEN SEPAY CỦA BẠN VÀO DÒNG DƯỚI NÀY
 // ==========================================
-$sepay_token = '****'; 
+$sepay_token = 'VPRESYL2GWNBL1OBXBWNFAYNVFB5UEHET6G0R7YK4MM7MKXUDIPQZKS2TX8LDJON'; 
 
 $curl = curl_init();
 curl_setopt_array($curl, array(

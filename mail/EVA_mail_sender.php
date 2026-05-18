@@ -21,7 +21,7 @@ function guiMail($to, $subject, $content) {
         // --- THAY ĐỔI THÔNG TIN CỦA BẠN ---
         $mail->Username   = 'vinh26132005@gmail.com'; 
         // LƯU Ý: Đây phải là MẬT KHẨU ỨNG DỤNG (16 ký tự), KHÔNG PHẢI mật khẩu đăng nhập Gmail
-        $mail->Password   = '******'; 
+        $mail->Password   = 'djbr ttie pzlo suae'; 
         // ----------------------------------
 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 

@@ -13,7 +13,7 @@ if (empty($user_message)) {
 }
 
 // DÁN API KEY CỦA BẠN VÀO BIẾN DƯỚI ĐÂY
-$gemini_api_key = 'AIzaSyB3QNmQFcNX4PM6J7scuHTNLYfE4gvQwVY';
+$gemini_api_key = '*******';
 
 // =========================================================================
 // [BẢN VÁ LỖI DANH TÍNH] LẤY TÊN NGƯỜI ĐĂNG NHẬP ĐỂ MỚM CHO AI

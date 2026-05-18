@@ -31,7 +31,7 @@ function guiMailXacNhan($emailKhach, $tenKhach, $maDonHang, $gioHang, $tongTien,
         $mail->CharSet = 'UTF-8';
         
         $mail->Username = 'vinh26132005@gmail.com'; 
-        $mail->Password = 'djbr ttie pzlo suae'; 
+        $mail->Password = '********'; 
 
         $mail->setFrom($mail->Username, 'EVA SHOP Admin');
         $mail->addAddress($emailKhach);
